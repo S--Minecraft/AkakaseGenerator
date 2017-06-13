@@ -16,7 +16,6 @@ var get = function(obj, cb){
     cb(JSON.parse(xhr.responseText));
   };
   xhr.open("GET", BASEURL+param);
-  xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
   xhr.send();
 };
 
@@ -24,24 +23,19 @@ var getText = function(cb){
   get({
     format: "json",
     action: "query",
-    list: "random",
-    rnnamespace: "0",
-    rnlimit: "1"
+    prop: "extracts",
+    generator: "random",
+    redirects: "1",
+    exintro: "1",
+    explaintext: "1",
+    grnnamespace: "0",
+    grnlimit: "1"
   }, function(json){
-    get({
-      format: "json",
-      action: "query",
-      prop: "extracts",
-      exintro: "",
-      explaintext: "",
-      titles: encodeURIComponent(json.query.random[0].title)
-    }, function(json){
-      for(var key in json.query.pages) {
-        var text = json.query.pages[key].extract;
-        break;
-      }
-      cb(text);
-    });
+    for(var key in json.query.pages) {
+      var text = json.query.pages[key].extract;
+      break;
+    }
+    cb(text);
   });
 };
 
