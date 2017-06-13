@@ -5,7 +5,7 @@ var get = function(obj, cb){
   var BASEURL = "https://ja.wikipedia.org/w/api.php";
   var xhr = new XMLHttpRequest();
 
-  param = "?";
+  param = "?origin=*&";
   for(var k in obj) {
     param += k+"="+obj[k]+"&";
   }
