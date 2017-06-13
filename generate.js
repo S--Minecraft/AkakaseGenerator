@@ -70,9 +70,11 @@ var addList = function(text) {
   $template = document.querySelector("#template").cloneNode(true);
   $template.removeAttribute("id");
   $template.removeAttribute("hidden");
-  $template.querySelector(".text").value = textFormat(text);
+  $text = $template.querySelector(".text")
+  $text.value = textFormat(text);
   $parent = document.querySelector(".created")
   $parent.insertBefore($template, $parent.firstChild);
+  $text.style.height = $text.scrollHeight + "px";
 };
 
 document.addEventListener("DOMContentLoaded", function(e){
