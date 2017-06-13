@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>垢消せジェネレータ</title>
+  <meta name="description" content="「～。わかったかはよ垢消せ」のジェネレータです">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+  <link rel="stylesheet" href="./generate.css">
+  <script src="./generate.js" defer></script>
+</head>
+<body>
+  <h1>垢消せジェネレータ</h1>
+  <div class="desc">
+    <p>Wikipediaからランダムに記事の冒頭を取得してきて140文字以内の「☝(´･_･`)～わかったかはよ垢消せ」を生成します</p>
+  </div>
+  <button id="generate-button" class="pure-button pure-button-primary">生成</button>
+  <div class="created"></div>
+  <div class="footer">
+    <p>(C) 29314(S__Minecraft) 2017-</p>
+  </div>
+  <div id="template" hidden>
+    <textarea class="text" maxlength="140" readonly></textarea>
+    <button class="pure-button button-secondary copy">コピー</button>
+  </div>
+</body>
+</html>

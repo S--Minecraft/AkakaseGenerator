@@ -1,0 +1,38 @@
+body {
+  padding: 30px;
+  margin: 10px;
+}
+.button-secondary{
+  color: white;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  background: rgb(66, 184, 221);
+}
+
+.created > div {
+  position: relative;
+  background: #EEE;
+  box-shadow: 1px 1px 1px 0px #999;
+  margin-top: 20px;
+  padding: 10px;
+  padding-left: 20px;
+}
+.created > div > textarea {
+  width: calc(100% - 70px);
+}
+.created > div > button {
+  position: absolute;
+  right: 5px;
+  padding: 6px;
+}
+
+.footer {
+  background: #DDD;
+  border-radius: 5px;
+  border: solid 1px #AAA;
+  padding: 5px;
+  margin-top: 30px;
+}
+.footer > p {
+  margin: 0;
+}
