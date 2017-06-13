@@ -69,7 +69,8 @@ var addList = function(text) {
   $template.removeAttribute("id");
   $template.removeAttribute("hidden");
   $template.querySelector(".text").value = textFormat(text);
-  document.querySelector(".created").appendChild($template);
+  $parent = document.querySelector(".created")
+  $parent.insertBefore($template, $parent.firstChild);
 };
 
 document.addEventListener("DOMContentLoaded", function(e){
