@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function(e){
       return;
     }
     if(e.target.classList.contains("tweet")){
-      var BASEURL = "https://twitter.com/?status=";
+      var BASEURL = "https://twitter.com/share?text=";
       var textarea = e.target.parentElement.parentElement.querySelector(".text");
       open(BASEURL+encodeURIComponent(textarea.value));
       return;
