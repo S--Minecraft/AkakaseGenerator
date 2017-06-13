@@ -33,7 +33,7 @@ var getText = function(cb){
       prop: "extracts",
       exintro: "",
       explaintext: "",
-      titles: encodeURIComponent(json.title)
+      titles: encodeURIComponent(json.query.random[0].title)
     }, function(json){
       cb(json.extract)
     });
