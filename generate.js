@@ -50,6 +50,7 @@ var suffix = "わかったかはよ垢消せ";
 var maxLen = 140 - prefix.length - suffix.length;
 var textFormat = function(text){
   var text = text.replace(/\n/g, "");
+  var text = text.replace(/[(（].+[)）]([^。]*(?:。|$))/, "$1");
   if(text.length <= maxLen) {
     return prefix+text+suffix;
   }
