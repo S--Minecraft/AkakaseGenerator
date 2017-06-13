@@ -58,7 +58,7 @@ var textFormat = function(text){
   var newText = prefix;
   for(var i = 0; ; i++) {
     var line = lines[i];
-    if(newText.length+line.length > 140) {
+    if(newText.length+line.length > maxLen) {
       break;
     }
     newText += line + "。";
