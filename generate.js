@@ -35,7 +35,11 @@ var getText = function(cb){
       explaintext: "",
       titles: encodeURIComponent(json.query.random[0].title)
     }, function(json){
-      cb(json.extract)
+      for(var key in json.query.pages) {
+        var text = json.query.pages[key].extract;
+        break;
+      }
+      cb(text);
     });
   });
 };
