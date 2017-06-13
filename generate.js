@@ -1,3 +1,4 @@
+(function(){
 var get = function(obj, cb){
   if(!obj) {
     throw "get(): obj is undefined or null";
@@ -44,10 +45,10 @@ var getText = function(cb){
   });
 };
 
+var prefix = "☝(´･_･`)";
+var suffix = "わかったかはよ垢消せ";
+var maxLen = 140 - prefix.length - suffix.length;
 var textFormat = function(text){
-  var prefix = "☝(´･_･`)";
-  var suffix = "わかったかはよ垢消せ";
-  var maxLen = 140 - prefix.length - suffix.length;
   if(text.length <= maxLen) {
     return text;
   }
@@ -86,4 +87,4 @@ document.addEventListener("DOMContentLoaded", function(e){
     document.execCommand("copy");
   });
 });
-
+}());
