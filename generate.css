@@ -11,19 +11,28 @@ body {
 
 .created > div {
   position: relative;
-  background: #EEE;
-  box-shadow: 1px 1px 1px 0px #999;
-  margin-top: 20px;
+  box-sizing: border-box;
   padding: 10px;
   padding-left: 20px;
+  margin-top: 20px;
+  min-height: 94px;
+  background: #EEE;
+  box-shadow: 1px 1px 1px 0px #999;
 }
 .created > div > textarea {
   width: calc(100% - 70px);
 }
-.created > div > button {
+.created > div > div {
   position: absolute;
   right: 5px;
+}
+.created > div > div > button {
+  display: block;
+  box-sizing: border-box;
+  height: 36px;
+  width: 60px;
   padding: 6px;
+  margin-bottom: 2px;
 }
 
 .footer {

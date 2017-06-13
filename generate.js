@@ -82,12 +82,18 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
   });
   document.addEventListener("click", function(e){
-    if(!e.target.classList.contains("copy")){
+    if(e.target.classList.contains("copy")){
+      var textarea = e.target.parentElement.querySelector(".text");
+      textarea.select();
+      document.execCommand("copy");
       return;
     }
-    var textarea = e.target.parentElement.querySelector(".text");
-    textarea.select();
-    document.execCommand("copy");
+    if(e.target.classList.contains("tweet")){
+      var BASEURL = "https://twitter.com/?status=";
+      var textarea = e.target.parentElement.querySelector(".text");
+      open(BASEURL+encodeURIComponent(textarea.value));
+      return;
+    }
   });
 });
 }());
