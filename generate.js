@@ -50,7 +50,7 @@ var suffix = "わかったかはよ垢消せ";
 var maxLen = 140 - prefix.length - suffix.length;
 var textFormat = function(text){
   if(text.length <= maxLen) {
-    return text;
+    return prefix+text+suffix;
   }
   var lines = text.split("。");
   var newText = prefix;
