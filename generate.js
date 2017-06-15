@@ -1,3 +1,5 @@
+"use strict";
+
 (function(){
 var get = function(obj, cb){
   if(!obj) {
@@ -6,7 +8,7 @@ var get = function(obj, cb){
   var BASEURL = "https://ja.wikipedia.org/w/api.php";
   var xhr = new XMLHttpRequest();
 
-  param = "?origin=*&";
+  var param = "?origin=*&";
   for(var k in obj) {
     param += k+"="+obj[k]+"&";
   }
@@ -55,7 +57,7 @@ var suffix = "わかったかはよ垢消せ";
 var maxLen = 140 - prefix.length - suffix.length;
 var textFormat = function(text){
   var text = text.replace(/\n/g, "");
-  var text = text.replace(/[(（][^)）]+?[)）]/g, "");
+  text = text.replace(/[(（][^)）]+?[)）]/g, "");
   if(text.length <= maxLen) {
     return prefix+text+suffix;
   }
@@ -72,12 +74,12 @@ var textFormat = function(text){
 };
 
 var addList = function(text) {
-  $template = document.querySelector("#template").cloneNode(true);
+  var $template = document.querySelector("#template").cloneNode(true);
   $template.removeAttribute("id");
   $template.removeAttribute("hidden");
-  $text = $template.querySelector(".text")
-  $parent = document.querySelector(".created")
+  var $text = $template.querySelector(".text")
   $text.value = text;
+  var $parent = document.querySelector(".created")
   $parent.insertBefore($template, $parent.firstChild);
   $text.style.height = $text.scrollHeight + "px";
 };
