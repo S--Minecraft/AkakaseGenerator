@@ -59,7 +59,7 @@ var textFormat = function(text){
   var text = text.replace(/\n/g, "");
   text = text.replace(/[(（][^)）]+?[)）]/g, "");
   if(text.length <= maxLen) {
-    return prefix+text.replace(/。$/, "")+suffix;
+    return prefix+text.replace(/んだ。?$/, "んだよ")+suffix;
   }
   var lines = text.split("。");
   var newText = prefix;
@@ -70,7 +70,7 @@ var textFormat = function(text){
     }
     newText += line + "。";
   }
-  return newText.slice(0, -1)+suffix;
+  return newText.replace(/んだ。?$/, "んだよ")+suffix;
 };
 
 var changeEnding = function(text) {
