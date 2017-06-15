@@ -1,6 +1,6 @@
+(function(){
 "use strict";
 
-(function(){
 var get = function(obj, cb){
   if(!obj) {
     throw "get(): obj is undefined or null";
