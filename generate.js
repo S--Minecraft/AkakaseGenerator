@@ -59,7 +59,7 @@ var textFormat = function(text){
   var text = text.replace(/\n/g, "");
   text = text.replace(/[(（][^)）]+?[)）]/g, "");
   if(text.length <= maxLen) {
-    return prefix+text+suffix;
+    return prefix+text.replace(/。$/, "")+suffix;
   }
   var lines = text.split("。");
   var newText = prefix;
@@ -70,8 +70,27 @@ var textFormat = function(text){
     }
     newText += line + "。";
   }
-  return newText+suffix;
+  return newText.slice(0, -1)+suffix;
 };
+
+var changeEnding = function(text) {
+  var lines = text.split("。");
+  var newText = ""
+  for(var i = 0; i < lines.length; i++) {
+    var line = lines[i];
+    if(line === "") {
+      continue;
+    }
+    var newLine = line.replace(/である$/, "なんだ");
+    newLine = newLine.replace(/(のもの|のひとつ)$/, "$1なんだ");
+    newLine = newLine.replace(/([れいす]る|[しれ]た|になる|された|指す)$/, "$1んだ");
+    if(line === newLine) {
+      newLine = newLine.replace(/$/, "なんだ");
+    }
+    newText += newLine + "。";
+  }
+  return newText;
+}
 
 var addList = function(text) {
   var $template = document.querySelector("#template").cloneNode(true);
@@ -84,10 +103,15 @@ var addList = function(text) {
   $text.style.height = $text.scrollHeight + "px";
 };
 
+
+var $changeEnding = document.querySelector("#change-ending");
 document.addEventListener("DOMContentLoaded", function(e){
   document.querySelector("#generate-button").addEventListener("click", function(e){
     getWiki(function(html){
       var text = getP(html);
+      if($changeEnding.checked){
+        text = changeEnding(text);
+      }
       var textFormated = textFormat(text);
       addList(textFormated);
     });
