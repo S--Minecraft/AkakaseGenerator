@@ -19,7 +19,7 @@ var get = function(obj, cb){
   xhr.send();
 };
 
-var getText = function(cb){
+var getWiki = function(cb){
   get({
     format: "json",
     action: "query",
@@ -27,16 +27,27 @@ var getText = function(cb){
     generator: "random",
     redirects: "1",
     exintro: "1",
-    explaintext: "1",
+    exsectionformat: "raw",
     grnnamespace: "0",
     grnlimit: "1"
   }, function(json){
     for(var key in json.query.pages) {
-      var text = json.query.pages[key].extract;
+      var html = json.query.pages[key].extract;
       break;
     }
-    cb(text);
+    cb(html);
   });
+};
+
+var getP = function(html){
+  var $div = document.createElement("div");
+  $div.innerHTML = html;
+  var $ps = $div.querySelectorAll("p");
+  var text = "";
+  for (var i = 0; i < $ps.length; i++) {
+    text += $ps[i].textContent;
+  }
+  return text;
 };
 
 var prefix = "☝(´･_･`)";
@@ -65,16 +76,18 @@ var addList = function(text) {
   $template.removeAttribute("id");
   $template.removeAttribute("hidden");
   $text = $template.querySelector(".text")
-  $text.value = textFormat(text);
   $parent = document.querySelector(".created")
+  $text.value = text;
   $parent.insertBefore($template, $parent.firstChild);
   $text.style.height = $text.scrollHeight + "px";
 };
 
 document.addEventListener("DOMContentLoaded", function(e){
   document.querySelector("#generate-button").addEventListener("click", function(e){
-    getText(function(text){
-      addList(text);
+    getWiki(function(html){
+      var text = getP(html);
+      var textFormated = textFormat(text);
+      addList(textFormated);
     });
   });
   document.addEventListener("click", function(e){
