@@ -83,7 +83,7 @@ var changeEnding = function(text) {
     }
     var newLine = line.replace(/である$/, "なんだ");
     newLine = newLine.replace(/(のもの|のひとつ)$/, "$1なんだ");
-    newLine = newLine.replace(/([れいす]る|[しれ]た|になる|された|を(?:指す|いう)|多い$/, "$1んだ");
+    newLine = newLine.replace(/([れいす]る|[しれ]た|になる|された|を(?:指す|いう)|多い)$/, "$1んだ");
     if(line === newLine) {
       newLine = newLine.replace(/$/, "なんだ");
     }
